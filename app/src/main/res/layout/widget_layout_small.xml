@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 小さいウィジェット（2×2想定）：左に日にち／時間の二段＋ラベル、右にSKIP -->
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/widget_root_small"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!-- 背景は設定（色・角丸・不透明度）に合わせてプロバイダが画像として描画する -->
+    <ImageView
+        android:id="@+id/widget_background"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="fitXY"
+        android:contentDescription="@null" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:paddingHorizontal="10dp"
+        android:paddingVertical="8dp">
+
+        <!-- 通常サイズ側とIDを揃えるためのダミー（プロバイダの共通更新が両レイアウトで効くように） -->
+        <TextView
+            android:id="@+id/widget_title_text"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:visibility="gone"
+            android:text="" />
+
+        <!-- 1行まとめ表示は通常側のダミー専用。小さい方も二段表示に統一したため未使用 -->
+        <TextView
+            android:id="@+id/widget_next_text"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:visibility="gone"
+            android:text="" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <!-- 二段表示：1段目＝日にち（MM/DD＋曜日）、2段目＝時間 -->
+            <TextView
+                android:id="@+id/widget_date_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="アラーム未設定"
+                android:textSize="13sp"
+                android:singleLine="true"
+                android:ellipsize="end"
+                android:textColor="#111111" />
+
+            <TextView
+                android:id="@+id/widget_time_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:textSize="22sp"
+                android:textStyle="bold"
+                android:singleLine="true"
+                android:textColor="#111111" />
+
+            <TextView
+                android:id="@+id/widget_next_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:textSize="11sp"
+                android:singleLine="true"
+                android:ellipsize="end"
+                android:textColor="#444444" />
+        </LinearLayout>
+
+        <FrameLayout
+            android:id="@+id/widget_skip_container"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/widget_skip_background"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="fitXY"
+                android:contentDescription="@null" />
+
+            <TextView
+                android:id="@+id/widget_skip_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:paddingHorizontal="4dp"
+                android:paddingVertical="6dp"
+                android:text="SKIP"
+                android:textSize="10sp"
+                android:textStyle="bold" />
+        </FrameLayout>
+    </LinearLayout>
+</FrameLayout>

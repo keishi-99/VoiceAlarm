@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/widget_root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!-- 背景は設定（色・角丸・不透明度）に合わせてプロバイダが画像として描画する -->
+    <ImageView
+        android:id="@+id/widget_background"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="fitXY"
+        android:contentDescription="@null" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="10dp">
+
+        <TextView
+            android:id="@+id/widget_title_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="次回のアラーム"
+            android:textSize="12sp"
+            android:textColor="#666666" />
+
+        <!-- 日時は二段表示：1段目に日にち、2段目に時間を大きく -->
+        <TextView
+            android:id="@+id/widget_date_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="アラームは未設定です"
+            android:textSize="15sp"
+            android:textColor="#111111" />
+
+        <TextView
+            android:id="@+id/widget_time_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textSize="28sp"
+            android:textStyle="bold"
+            android:textColor="#111111" />
+
+        <!-- 小さいウィジェット側とIDを揃えるためのダミー（共通更新用。通常側では二段表示を使う） -->
+        <TextView
+            android:id="@+id/widget_next_text"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:visibility="gone"
+            android:text="" />
+
+        <TextView
+            android:id="@+id/widget_next_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textSize="13sp"
+            android:textColor="#444444" />
+
+        <!-- スキップボタンは背景画像＋テキストで自作し、ウィジェット背景と透過の効き方を揃える -->
+        <FrameLayout
+            android:id="@+id/widget_skip_container"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp">
+
+            <ImageView
+                android:id="@+id/widget_skip_background"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="fitXY"
+                android:contentDescription="@null" />
+
+            <TextView
+                android:id="@+id/widget_skip_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:paddingHorizontal="16dp"
+                android:paddingVertical="8dp"
+                android:text="SKIP"
+                android:textSize="13sp"
+                android:textStyle="bold" />
+        </FrameLayout>
+    </LinearLayout>
+</FrameLayout>
